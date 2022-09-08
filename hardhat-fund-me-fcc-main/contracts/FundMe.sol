@@ -59,7 +59,18 @@ contract FundMe {
         s_funders.push(msg.sender);
     }
 
-    function withdraw() public onlyOwner {
+    event Received(address, uint256);
+    event Fallback(address, uint256);
+
+    fallback() external payable {
+        emit Fallback(msg.sender, msg.value);
+    }
+
+    receive() external payable {
+        emit Received(msg.sender, msg.value);
+    }
+
+    function withdraw() public {
         for (
             uint256 funderIndex = 0;
             funderIndex < s_funders.length;
@@ -68,6 +79,7 @@ contract FundMe {
             address funder = s_funders[funderIndex];
             s_addressToAmountFunded[funder] = 0;
         }
+
         s_funders = new address[](0);
         // Transfer vs call vs Send
         // payable(msg.sender).transfer(address(this).balance);

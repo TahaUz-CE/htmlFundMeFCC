@@ -19,7 +19,7 @@ const RINKEBY_RPC_URL =
     "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const PRIVATE_KEY =
     process.env.PRIVATE_KEY ||
-    "0x11ee3108a03081fe260ecdc106554d09d9d1209bcafd46942b10e02943effc4a"
+    "0x998791dd067697814529698ada6b8d49b717949d0bc20fe7a8e4a81450860856"
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
 
 module.exports = {
